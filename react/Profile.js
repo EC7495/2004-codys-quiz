@@ -1,20 +1,13 @@
 import React from 'react';
 
 export default class Profile extends React.Component {
-
-  render () {
-
+  render() {
     return (
-
       <div>
-        <h1></h1>
-        <p></p>
-        <div className="desc"></div>
+        <h1>Profile for {this.props.profile.name}</h1>
+        <p>Age: {this.props.profile.age}</p>
+        <div className="desc">{this.props.profile.description}</div>
       </div>
-
     );
-
   }
-
 }
-

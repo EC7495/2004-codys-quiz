@@ -1,6 +1,6 @@
 import React from 'react';
 
-import chai, {expect} from 'chai';
+import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
 chai.use(chaiEnzyme());
 import { shallow } from 'enzyme';
@@ -18,19 +18,16 @@ import Profile from '../react/Profile';
 // I can't wait! Let's get started!
 
 describe('Profile', () => {
-
   describe('should render the pug profile props it receives', () => {
-
     let pugProfile;
     let ProfileWrapper;
 
     beforeEach('create <Profile /> wrapper', () => {
-
       // Hey! Here's my pug profile! Make sure to catch my good side!
       pugProfile = {
         name: 'Cody',
         age: '6',
-        description: 'Cody is a loveable pug!'
+        description: 'Cody is a loveable pug!',
       };
 
       // Arf! What's going on here?
@@ -49,45 +46,42 @@ describe('Profile', () => {
       //  2. It also only causes this 'virtual render' to happen for the component we pass in.
       //     If our component were to render other child components (not just elements, like div and span),
       //     their render methods will not be invoked. This makes sure that we only test one component at a time!
-      ProfileWrapper = shallow(<Profile profile={pugProfile}/>);
+      ProfileWrapper = shallow(<Profile profile={pugProfile} />);
     });
 
-    xit('includes the pug name as a header', () => {
-
-      expect(ProfileWrapper.find('h1')).to.have.html('<h1>Profile for Cody</h1>');
-
+    it('includes the pug name as a header', () => {
+      expect(ProfileWrapper.find('h1')).to.have.html(
+        '<h1>Profile for Cody</h1>'
+      );
     });
 
-    xit('includes the pug age as a header', () => {
-
+    it('includes the pug age as a header', () => {
       expect(ProfileWrapper.find('p')).to.have.html('<p>Age: 6</p>');
-
     });
 
-    xit('includes the pug description as a div', () => {
-
-      expect(ProfileWrapper.find('.desc')).to.have.html('<div class="desc">Cody is a loveable pug!</div>');
-
+    it('includes the pug description as a div', () => {
+      expect(ProfileWrapper.find('.desc')).to.have.html(
+        '<div class="desc">Cody is a loveable pug!</div>'
+      );
     });
 
-    xit('changes if a different pug profile is passed in as props', () => {
-
+    it('changes if a different pug profile is passed in as props', () => {
       // Another pug?!? Wait, is that...Doug?! From the internet?!? Of course he can have a profile!
       // Make sure the Profile component accomodates him too!
       pugProfile = {
         name: 'Doug',
         age: '4',
-        description: 'I am a celebrity pug!'
+        description: 'I am a celebrity pug!',
       };
 
-      ProfileWrapper = shallow(<Profile profile={pugProfile}/>);
-      expect(ProfileWrapper.find('h1')).to.have.html('<h1>Profile for Doug</h1>');
+      ProfileWrapper = shallow(<Profile profile={pugProfile} />);
+      expect(ProfileWrapper.find('h1')).to.have.html(
+        '<h1>Profile for Doug</h1>'
+      );
       expect(ProfileWrapper.find('p')).to.have.html('<p>Age: 4</p>');
-      expect(ProfileWrapper.find('.desc')).to.have.html('<div class="desc">I am a celebrity pug!</div>');
-
+      expect(ProfileWrapper.find('.desc')).to.have.html(
+        '<div class="desc">I am a celebrity pug!</div>'
+      );
     });
-
   }); // end describe should render the pug profile props it receives
-
 }); // end describe Profile
-
